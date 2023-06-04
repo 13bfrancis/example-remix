@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: remix
+    env: node
+    plan: free
+    buildCommand: yarn && yarn build
+    startCommand: yarn start
+    healthCheckPath: /
+    envVars:
+      - key: SESSION_SECRET
+        generateValue: true
+      - key: NODE_ENV #required so NODE_ENV is set in build env
+        value: production
